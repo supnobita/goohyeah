@@ -3,6 +3,10 @@
 def call(String k8sDeploymentName,String nameSpace){
     pipeline{
     agent any
+        environment {
+        K8S_DEPLOYMENT_NAME = ${k8sDeploymentName}
+        NAME_SPACE= ${nameSpace}
+    }
     stages {
         stage('Git Pull'){
             steps{
@@ -11,8 +15,8 @@ def call(String k8sDeploymentName,String nameSpace){
         }
         stage('Deploy') {
             steps{
-                echo "${k8sDeploymentName}"
-                echo "${nameSpace}"
+                echo "${K8S_DEPLOYMENT_NAME}"
+                echo "${NAME_SPACE}"
                 sh "printenv"
             }
         }
