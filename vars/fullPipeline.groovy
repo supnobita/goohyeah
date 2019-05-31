@@ -1,6 +1,6 @@
 ///vars/pipeline.groovy
 
-def call(string k8sDeploymentName,string nameSpace){
+def call(String k8sDeploymentName,String nameSpace){
     pipeline{
     agent any
     stages {
